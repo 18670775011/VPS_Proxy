@@ -1,0 +1,21 @@
+开启端口
+
+firewall-cmd --zone=public --add-port=3228/tcp --permanent
+
+命令含义：
+
+--zone #作用域
+
+--add-port=80/tcp  #添加端口，格式为：端口/通讯协议
+
+--permanent  #永久生效，没有此参数重启后失效
+
+重启防火墙
+
+firewall-cmd --reload
+
+
+//用户名密码配置
+auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/passwd
+acl auth_user proxy_auth REQUIRED
+http_access allow auth_user
